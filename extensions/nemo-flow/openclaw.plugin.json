@@ -1,0 +1,70 @@
+{
+  "id": "nemo-flow",
+  "name": "NeMo Flow",
+  "description": "NeMo Flow plugin-host initialization and execution wrapping for OpenClaw.",
+  "contracts": {
+    "agentStreamingLlmMiddleware": ["pi"],
+    "agentToolCallMiddleware": ["pi"]
+  },
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["version", "components"],
+    "properties": {
+      "version": {
+        "type": "number",
+        "enum": [1]
+      },
+      "components": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind"],
+          "properties": {
+            "kind": {
+              "type": "string",
+              "minLength": 1
+            },
+            "enabled": {
+              "type": "boolean"
+            },
+            "config": {
+              "type": "object",
+              "additionalProperties": true
+            }
+          }
+        }
+      },
+      "policy": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "unknown_component": {
+            "type": "string",
+            "enum": ["ignore", "warn", "error"]
+          },
+          "unknown_field": {
+            "type": "string",
+            "enum": ["ignore", "warn", "error"]
+          },
+          "unsupported_value": {
+            "type": "string",
+            "enum": ["ignore", "warn", "error"]
+          }
+        }
+      }
+    }
+  },
+  "uiHints": {
+    "components": {
+      "label": "Components",
+      "help": "NeMo Flow plugin-host components to activate."
+    },
+    "policy": {
+      "label": "Policy",
+      "help": "Optional NeMo Flow plugin-host validation policy.",
+      "advanced": true
+    }
+  }
+}

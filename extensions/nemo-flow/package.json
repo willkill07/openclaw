@@ -1,0 +1,22 @@
+{
+  "name": "@openclaw/nemo-flow",
+  "version": "2026.3.14",
+  "description": "OpenClaw NeMo Flow plugin-host and execution middleware integration",
+  "type": "module",
+  "optionalDependencies": {
+    "nemo-flow-node": "0.1.0"
+  },
+  "devDependencies": {
+    "openclaw": "workspace:*"
+  },
+  "openclaw": {
+    "extensions": [
+      "./index.ts"
+    ],
+    "install": {
+      "npmSpec": "@openclaw/nemo-flow",
+      "localPath": "extensions/nemo-flow",
+      "defaultChoice": "npm"
+    }
+  }
+}
